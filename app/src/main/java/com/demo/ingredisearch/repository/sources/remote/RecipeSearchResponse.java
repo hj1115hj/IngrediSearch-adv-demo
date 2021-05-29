@@ -14,7 +14,7 @@ public class RecipeSearchResponse {
 
     @SerializedName("recipes")
     @Expose()
-    private List<Recipe> recipes;
+    private final List<Recipe> recipes;
 
     public RecipeSearchResponse(List<Recipe> recipes) {
         this.recipes = recipes;
@@ -30,9 +30,6 @@ public class RecipeSearchResponse {
 
     @Override
     public String toString() {
-        return "RecipeSearchResponse{" +
-                "count=" + count +
-                ", recipes=" + recipes +
-                '}';
+        return "RecipeSearchResponse{count=" + count + ", recipes=" + recipes + '}';
     }
 }

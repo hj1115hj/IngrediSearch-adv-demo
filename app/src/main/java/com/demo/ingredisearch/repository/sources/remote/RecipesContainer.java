@@ -8,7 +8,7 @@ import java.util.List;
 
 public class RecipesContainer {
 
-    private List<Recipe> recipes;
+    private final List<Recipe> recipes;
 
     public RecipesContainer(List<Recipe> recipes) {
         this.recipes = recipes;
@@ -21,8 +21,6 @@ public class RecipesContainer {
     @NonNull
     @Override
     public String toString() {
-        return "FavoriteRecipesContainer{" +
-                "recipes=" + recipes +
-                '}';
+        return "FavoriteRecipesContainer{recipes=" + recipes + '}';
     }
 }

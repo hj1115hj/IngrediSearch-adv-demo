@@ -10,7 +10,7 @@ public class RecipeResponse {
 
     @SerializedName("recipe")
     @Expose()
-    private Recipe recipe;
+    private final Recipe recipe;
 
     public RecipeResponse(Recipe recipe) {
         this.recipe = recipe;
@@ -23,8 +23,6 @@ public class RecipeResponse {
     @Override
     @NonNull
     public String toString() {
-        return "RecipeResponse{" +
-                "recipe=" + recipe +
-                '}';
+        return "RecipeResponse{recipe=" + recipe + '}';
     }
 }

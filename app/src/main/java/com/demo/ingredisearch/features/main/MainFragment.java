@@ -40,7 +40,6 @@ public class MainFragment extends Fragment {
 
     private void setupNavigation() {
         searchButton.setOnClickListener(view -> navigateTo(R.id.action_mainFragment_to_searchFragment));
-
         favButton.setOnClickListener(view -> navigateTo(R.id.action_mainFragment_to_favoritesFragment));
     }
 

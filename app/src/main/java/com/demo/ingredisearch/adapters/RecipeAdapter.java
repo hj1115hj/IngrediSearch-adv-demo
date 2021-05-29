@@ -19,8 +19,6 @@ import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
-    private static final String TAG = "RecipeApp";
-
     public interface Interaction {
         void onClickItem(Recipe item);
         void onAddFavorite(Recipe item);
@@ -28,7 +26,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     }
 
     private List<Recipe> mRecipes;
-    private Interaction interaction;
+    private final Interaction interaction;
 
     public RecipeAdapter(Interaction interaction) {
         this.interaction = interaction;

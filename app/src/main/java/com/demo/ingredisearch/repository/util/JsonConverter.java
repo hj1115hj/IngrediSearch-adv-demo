@@ -9,7 +9,7 @@ import java.util.List;
 
 public class JsonConverter {
 
-    private static Gson gson = new Gson();
+    private static final Gson gson = new Gson();
 
     public static String toJson(List<Recipe> recipes) {
         return gson.toJson(new RecipesContainer(recipes));

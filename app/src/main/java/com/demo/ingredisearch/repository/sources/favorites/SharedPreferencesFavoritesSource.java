@@ -11,7 +11,7 @@ public class SharedPreferencesFavoritesSource {
 
     public static final String FAVORITES_KEY = "FAVORITE_KEY";
 
-    private SharedPreferences mPreferences;
+    private final SharedPreferences mPreferences;
 
     public SharedPreferencesFavoritesSource(Context context) {
         mPreferences = context.getSharedPreferences(FAVORITES_KEY, Context.MODE_PRIVATE);

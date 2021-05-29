@@ -16,9 +16,7 @@ import static java.util.Collections.emptyList;
 
 public class RecipeApiClient {
 
-    private static final String TAG = "RecipeApp";
-
-    private ServiceGenerator mServiceGenerator = new ServiceGenerator();
+    private final ServiceGenerator mServiceGenerator = new ServiceGenerator();
 
     public void searchRecipes(String query, ResponseCallback<List<Recipe>> callback) {
         Call<RecipeSearchResponse> call = mServiceGenerator.getRecipesService(query);

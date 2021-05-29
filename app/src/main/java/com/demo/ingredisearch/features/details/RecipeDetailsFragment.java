@@ -21,7 +21,6 @@ import com.demo.ingredisearch.util.Resource;
 import com.demo.ingredisearch.util.ViewHelper;
 
 public class RecipeDetailsFragment extends Fragment {
-    private ScrollView mScrollView;
     private ViewHelper mViewHelper;
     private RecipeDetailsViewModel mViewModel;
 
@@ -38,7 +37,7 @@ public class RecipeDetailsFragment extends Fragment {
     }
 
     private void getViews(View root) {
-        mScrollView = root.findViewById(R.id.parent);
+        ScrollView mScrollView = root.findViewById(R.id.parent);
         mRecipeImage = root.findViewById(R.id.recipe_image);
         mRecipeTitle = root.findViewById(R.id.recipe_title);
         mRecipeRank = root.findViewById(R.id.recipe_social_score);

@@ -24,8 +24,6 @@ import com.demo.ingredisearch.util.ViewHelper;
 
 public class SearchResultsFragment extends Fragment {
     private RecyclerView mRecyclerView;
-    private RecipeAdapter mAdapter;
-
     private TextView mRetry;
     private ViewHelper mViewHelper;
     private String mQuery;
@@ -83,7 +81,7 @@ public class SearchResultsFragment extends Fragment {
 
     private void setupRecyclerView() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        mAdapter = new RecipeAdapter(new RecipeAdapter.Interaction() {
+        RecipeAdapter mAdapter = new RecipeAdapter(new RecipeAdapter.Interaction() {
             @Override
             public void onRemoveFavorite(@NonNull Recipe recipe) {
                 // TODO
