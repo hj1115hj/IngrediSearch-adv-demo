@@ -20,9 +20,9 @@ import java.util.List;
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
     public interface Interaction {
-        void onClickItem(Recipe item);
-        void onAddFavorite(Recipe item);
-        void onRemoveFavorite(Recipe item);
+        void onClickItem(Recipe recipe);
+        void onAddFavorite(Recipe recipe);
+        void onRemoveFavorite(Recipe recipe);
     }
 
     private List<Recipe> mRecipes;

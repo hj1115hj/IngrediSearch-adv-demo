@@ -29,4 +29,22 @@ public class LiveDataTestUtil {
         //noinspection unchecked
         return (T) data[0];
     }
+
+
+    /**
+     * Capture all values that are emitted to a LiveData<T> during the execution of
+     * `captureBlock`.
+     */
+    public static <T> LiveDataValueCapture<T> captureValues(LiveData<T> liveData, Runnable captureBlock) {
+        LiveDataValueCapture<T> capture = new LiveDataValueCapture<>();
+        Observer<T> observer = capture::addValue;
+        liveData.observeForever(observer);
+        try{
+            capture.apply(captureBlock);
+        } finally {
+            liveData.removeObserver(observer);
+        }
+        return capture;
+    }
+
 }

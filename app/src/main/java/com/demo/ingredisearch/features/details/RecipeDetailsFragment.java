@@ -70,16 +70,22 @@ public class RecipeDetailsFragment extends Fragment {
     }
 
     private void createViewModel() {
-    // TODO: uncomment below four lines
-
 //        RecipeApplication app = (RecipeApplication) requireActivity().getApplication();
-//        mViewModel = new ViewModelProvider(this,
+//        mViewModel = new ViewModelProvider(getViewModelStore(),
 //                new RecipeDetailsViewModelFactory(app.getInjection().getRecipeRepository()))
 //                .get(RecipeDetailsViewModel.class);
     }
 
     private <T> void handleResponse(Resource<Recipe> response) {
         switch (response.status) {
+            case SUCCESS:
+                if (response.data != null) {
+                    mViewHelper.hideOthers();
+                    showRecipe(response.data);
+                } else {
+                    mViewHelper.showNoResults();
+                }
+                break;
             case LOADING:
                 mViewHelper.showLoading();
                 break;
@@ -87,12 +93,7 @@ public class RecipeDetailsFragment extends Fragment {
                 mViewHelper.showError();
                 break;
             default:
-                if (response.data != null) {
-                    mViewHelper.hideOthers();
-                    showRecipe(response.data);
-                } else {
-                    mViewHelper.showNoResults();
-                }
+                throw new IllegalArgumentException();
         }
     }
 

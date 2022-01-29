@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 public class FavoritesFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private ViewHelper mViewHelper;
+    private RecipeAdapter mAdapter;
 
     @Nullable
     @Override
@@ -56,18 +57,14 @@ public class FavoritesFragment extends Fragment {
 
     private void setupRecyclerView() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        // TODO
-        // unused
-        // TODO
-        RecipeAdapter mAdapter = new RecipeAdapter(new RecipeAdapter.Interaction() {
+        mAdapter = new RecipeAdapter(new RecipeAdapter.Interaction() {
             @Override
-            public void onRemoveFavorite(@NotNull Recipe item) {
+            public void onRemoveFavorite(@NotNull Recipe recipe) {
                 // TODO
             }
 
             @Override
-            public void onAddFavorite(@NotNull Recipe item) {
+            public void onAddFavorite(@NotNull Recipe recipe) {
                 // unused
             }
 

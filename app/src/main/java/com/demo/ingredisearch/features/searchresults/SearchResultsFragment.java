@@ -27,6 +27,7 @@ public class SearchResultsFragment extends Fragment {
     private TextView mRetry;
     private ViewHelper mViewHelper;
     private String mQuery;
+    private RecipeAdapter mAdapter;
 
     @Nullable
     @Override
@@ -81,7 +82,7 @@ public class SearchResultsFragment extends Fragment {
 
     private void setupRecyclerView() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        RecipeAdapter mAdapter = new RecipeAdapter(new RecipeAdapter.Interaction() {
+        mAdapter = new RecipeAdapter(new RecipeAdapter.Interaction() {
             @Override
             public void onRemoveFavorite(@NonNull Recipe recipe) {
                 // TODO
@@ -95,15 +96,15 @@ public class SearchResultsFragment extends Fragment {
             @Override
             public void onClickItem(@NonNull Recipe recipe) {
                 // TODO
-                navigateToRecipeDetails(recipe);
+                navigateToRecipeDetails(recipe.getRecipeId());
             }
         });
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    private void navigateToRecipeDetails(@NonNull Recipe recipe) {
+    private void navigateToRecipeDetails(@NonNull String recipeId) {
         Navigation.findNavController(requireView()).navigate(
-                SearchResultsFragmentDirections.actionSearchResultsFragmentToRecipeDetailsFragment(recipe.getRecipeId()));
+                SearchResultsFragmentDirections.actionSearchResultsFragmentToRecipeDetailsFragment(recipeId));
     }
 
     public void searchRecipes(String query) {

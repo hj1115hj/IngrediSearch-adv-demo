@@ -67,13 +67,4 @@ public class SearchResultsViewModelTest {
         // Assert (Then)
     }
 
-    @Test
-    public void requestToFavorites_shouldTriggerNavToFavorites() throws Exception {
-        // Arrange (Given)
-
-        // Act (When)
-
-        // Assert (Then)
-    }
-
 }
