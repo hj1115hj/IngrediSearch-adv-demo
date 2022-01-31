@@ -2,50 +2,48 @@ package com.demo.ingredisearch.features.favorites;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
 import com.demo.ingredisearch.models.Recipe;
 import com.demo.ingredisearch.repository.RecipeRepository;
 import com.demo.ingredisearch.util.Event;
+import com.demo.ingredisearch.util.Resource;
 
 import java.util.List;
 
 public class FavoritesViewModel extends ViewModel {
-    private final RecipeRepository recipeRepository;
+    private final RecipeRepository mRecipeRepository;
 
-    public FavoritesViewModel(RecipeRepository recipeRepository) {
-        this.recipeRepository = recipeRepository;
-        load();
+    public FavoritesViewModel(RecipeRepository mRecipeRepository) {
+        this.mRecipeRepository = mRecipeRepository;
+        mFavorites.setValue(Resource.loading(null));
     }
 
-    private final MutableLiveData<List<Recipe>> mFavorites = new MutableLiveData<>();
+    private final MutableLiveData<Resource<List<Recipe>>> mFavorites = new MutableLiveData<>();
 
-    public LiveData<List<Recipe>> getFavorites() {
-        return mFavorites;
-    }
-
-    public void load() {
-        mFavorites.setValue(recipeRepository.getFavorites());
+    public LiveData<Resource<List<Recipe>>> getFavorites() {
+        return Transformations.switchMap(mRecipeRepository.getFavorites(), resource -> {
+            mFavorites.setValue(resource);
+            return mFavorites;
+        });
     }
 
     public void removeFavorite(Recipe recipe) {
-        recipeRepository.removeFavorite(recipe);
-        load();
+        mRecipeRepository.removeFavorite(recipe);
     }
 
     public void clearFavorites() {
-        recipeRepository.clearFavorites();
-        load();
+        mRecipeRepository.clearFavorites();
     }
 
-    private final MutableLiveData<Event<String>> mNavToRecipeDetails = new MutableLiveData<>();
+    public void requestToNavToDetails(String recipeId) {
+        mNavToDetails.setValue(new Event<>(recipeId));
+    }
+
+    private final MutableLiveData<Event<String>> mNavToDetails = new MutableLiveData<>();
 
     public LiveData<Event<String>> navToRecipeDetails() {
-        return mNavToRecipeDetails;
-    }
-
-    public void requestToRecipeDetails(Recipe recipe) {
-        // Do some business logic if necessary and then ...
-        mNavToRecipeDetails.setValue(new Event<>(recipe.getRecipeId()));
+        return mNavToDetails;
     }
 }

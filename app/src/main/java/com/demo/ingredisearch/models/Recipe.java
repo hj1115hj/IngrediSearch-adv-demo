@@ -4,16 +4,25 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.util.Arrays;
 import java.util.Objects;
 
+@Entity
 public class Recipe implements Parcelable {
+    @PrimaryKey @NonNull
+    @ColumnInfo(name = "id")
     private String recipe_id;
     private String title;
+    @ColumnInfo(name = "imageUrl")
     private String image_url;
+    @ColumnInfo(name = "sourceUrl")
     private String source_url;
     private String[] ingredients;
+    @ColumnInfo(name = "socialRank")
     private float social_rank;
     private boolean isFavorite;
 
@@ -52,7 +61,7 @@ public class Recipe implements Parcelable {
         isFavorite = in.readByte() != 0;
     }
 
-    public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
+    public static final Creator<Recipe> CREATOR = new Creator<>() {
         @Override
         public Recipe createFromParcel(Parcel in) {
             return new Recipe(in);
@@ -157,5 +166,34 @@ public class Recipe implements Parcelable {
 
     public void setFavorite(boolean status) {
         this.isFavorite = status;
+    }
+
+    @NonNull
+    public String getRecipe_id() {
+        return recipe_id;
+    }
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public String getSource_url() {
+        return source_url;
+    }
+
+    public void setRecipe_id(@NonNull String recipe_id) {
+        this.recipe_id = recipe_id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
+
+    public void setSource_url(String source_url) {
+        this.source_url = source_url;
     }
 }

@@ -2,10 +2,10 @@ package com.demo.ingredisearch.repository.sources.favorites;
 
 import org.junit.Test;
 
-public class SharedPreferencesFavoritesSourceTest {
+public class FavoritesSourceImplTest {
 
     // SUT
-    SharedPreferencesFavoritesSource mFavoritesSource;
+    FavoritesSourceImpl mFavoritesSource;
 
     @Test
     public void getFavorites_noFavorites_returnEmptyList() {

@@ -3,12 +3,15 @@ package com.demo.ingredisearch.features.favorites;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+import static java.util.Collections.emptyList;
+
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 
 import com.demo.ingredisearch.TestData;
 import com.demo.ingredisearch.models.Recipe;
 import com.demo.ingredisearch.util.Event;
 import com.demo.ingredisearch.util.LiveDataTestUtil;
+import com.demo.ingredisearch.util.Resource;
 
 import org.junit.After;
 import org.junit.Before;
@@ -44,10 +47,10 @@ public class FavoritesViewModelTest {
 //        mFavoritesSource.addFavorites(TestData.mFavorites);
 
         // Act (When)
-        List<Recipe> favorites = LiveDataTestUtil.getOrAwaitValue(mViewModel.getFavorites());
+        Resource<List<Recipe>> favorites = LiveDataTestUtil.getOrAwaitValue(mViewModel.getFavorites());
 
         // Assert (Then)
-        assertThat(favorites, is(TestData.mFavorites));
+        assertThat(favorites, is(Resource.success(TestData.mFavorites)));
     }
 
     @Test
@@ -59,8 +62,8 @@ public class FavoritesViewModelTest {
         mViewModel.removeFavorite(TestData.recipe1_favored);
 
         // Assert (Then)
-        List<Recipe> favorites = LiveDataTestUtil.getOrAwaitValue(mViewModel.getFavorites());
-        assertThat(favorites, is(List.of(TestData.recipe2_favored)));
+        Resource<List<Recipe>> favorites = LiveDataTestUtil.getOrAwaitValue(mViewModel.getFavorites());
+        assertThat(favorites, is(Resource.success(List.of(TestData.recipe2_favored))));
     }
 
     @Test
@@ -72,8 +75,8 @@ public class FavoritesViewModelTest {
         mViewModel.clearFavorites();
 
         // Assert (Then)
-        List<Recipe> favorites = LiveDataTestUtil.getOrAwaitValue(mViewModel.getFavorites());
-        assertThat(favorites.size(), is(0));
+        Resource<List<Recipe>> favorites = LiveDataTestUtil.getOrAwaitValue(mViewModel.getFavorites());
+        assertThat(favorites, is(Resource.success(emptyList())));
     }
 
     @Test
@@ -82,7 +85,7 @@ public class FavoritesViewModelTest {
 //        mFavoritesSource.addFavorites(TestData.mFavorites);
 
         // Act (When)
-        mViewModel.requestToRecipeDetails(TestData.recipe1_favored);
+        mViewModel.requestToNavToDetails(TestData.recipe1_favored.getRecipeId());
 
         // Assert (Then)
         Event<String> event = LiveDataTestUtil.getOrAwaitValue(mViewModel.navToRecipeDetails());

@@ -21,13 +21,13 @@ public class RecipeApiClient {
     public void searchRecipes(String query, ResponseCallback<List<Recipe>> callback) {
         Call<RecipeSearchResponse> call = mServiceGenerator.getRecipesService(query);
 
-        call.enqueue(new Callback<RecipeSearchResponse>() {
+        call.enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<RecipeSearchResponse> call, @NonNull Response<RecipeSearchResponse> response) {
                 RecipeSearchResponse searchResponse = response.body();
                 if (response.isSuccessful()) {
                     if (response.code() == 401) { // Unauthorised error
-                        callback.onError(Resource.error("401 Unauthorized. Token may be invalid", null));
+                        callback.onError(Resource.error("Unauthorized Error", null));
                     } else if (searchResponse == null) {
                         callback.onDataAvailable(Resource.success(emptyList()));
                     } else {
@@ -48,7 +48,7 @@ public class RecipeApiClient {
     public void searchRecipe(String recipeId, ResponseCallback<Recipe> callback) {
         Call<RecipeResponse> call = mServiceGenerator.getRecipeService(recipeId);
 
-        call.enqueue(new Callback<RecipeResponse>() {
+        call.enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<RecipeResponse> call, @NonNull Response<RecipeResponse> response) {
                 RecipeResponse recipe = response.body();
