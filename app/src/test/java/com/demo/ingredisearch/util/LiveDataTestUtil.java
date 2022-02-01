@@ -36,7 +36,7 @@ public class LiveDataTestUtil {
      * `captureBlock`.
      */
     public static <T> LiveDataValueCapture<T> captureValues(LiveData<T> liveData, Runnable captureBlock) {
-        LiveDataValueCapture<T> capture = new LiveDataValueCapture<>();
+        LiveDataValueCapture<T> capture = new LiveDataValueCapture<T>();
         Observer<T> observer = capture::addValue;
         liveData.observeForever(observer);
         try{

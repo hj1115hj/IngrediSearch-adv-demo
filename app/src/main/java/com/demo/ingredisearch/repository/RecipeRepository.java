@@ -27,7 +27,7 @@ public class RecipeRepository {
         // TODO
     }
 
-    public LiveData<Resource<List<Recipe>>> getFavorites() {
+    public LiveData<List<Recipe>> getFavorites() {
         // TODO
         return null;
     }

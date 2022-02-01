@@ -16,6 +16,10 @@ public class FakeRemoteDataSource {
 
     private DataStatus mDataStatus;
 
+    public FakeRemoteDataSource(/* TODO */) {
+        this.mDataStatus = DataStatus.Success;
+    }
+
     public void searchRecipes(String query, ResponseCallback<List<Recipe>> callback) {
         // TODO
         callback.onDataAvailable(Resource.success(new ArrayList<>(mRecipes.values())));
@@ -30,8 +34,11 @@ public class FakeRemoteDataSource {
         this.mDataStatus = dataStatus;
     }
 
-    public void addRecipes(List<Recipe> recipes) {
+    public void prepareRecipes(List<Recipe> recipes) {
         // TODO
     }
 
+    public void prepareRecipes(Recipe...recipes) {
+        // TODO
+    }
 }

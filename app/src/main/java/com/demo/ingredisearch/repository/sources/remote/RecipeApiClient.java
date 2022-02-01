@@ -27,7 +27,7 @@ public class RecipeApiClient {
                 RecipeSearchResponse searchResponse = response.body();
                 if (response.isSuccessful()) {
                     if (response.code() == 401) { // Unauthorised error
-                        callback.onError(Resource.error("Unauthorized Error", null));
+                        callback.onError(Resource.error("Authorization Error", null));
                     } else if (searchResponse == null) {
                         callback.onDataAvailable(Resource.success(emptyList()));
                     } else {

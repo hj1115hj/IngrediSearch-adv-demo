@@ -1,11 +1,17 @@
 package com.demo.ingredisearch.repository.sources.favorites;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class FavoritesSourceImplTest {
 
     // SUT
     FavoritesSourceImpl mFavoritesSource;
+
+    @Before
+    public void init() {
+        mFavoritesSource = new FavoritesSourceImpl(null);
+    }
 
     @Test
     public void getFavorites_noFavorites_returnEmptyList() {

@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Room;
 
 import com.demo.ingredisearch.models.Recipe;
-import com.demo.ingredisearch.util.Resource;
 
 import java.util.List;
 
@@ -25,7 +24,8 @@ public class FavoritesSourceImpl {
         ).allowMainThreadQueries().build();
     }
 
-    public LiveData<Resource<List<Recipe>>> getFavorites() {
+    // Ignore error condition just for simplicity
+    public LiveData<List<Recipe>> getFavorites() {
         // TODO
         return null;
     }
