@@ -44,7 +44,7 @@ public class FavoritesViewModelTest {
     @Test
     public void getFavorites_returnFavoriteRecipes() throws Exception {
         // Arrange (Given)
-//        mFavoritesSource.addFavorites(TestData.mFavorites);
+//        mFavoritesSource.prepareFavorites(TestData.mFavorites);
 
         // Act (When)
         Resource<List<Recipe>> favorites = LiveDataTestUtil.getOrAwaitValue(mViewModel.getFavorites());
@@ -56,7 +56,7 @@ public class FavoritesViewModelTest {
     @Test
     public void removeFavorite_shouldRemoveFavorite() throws Exception {
         // Arrange (Given)
-//        mFavoritesSource.addFavorites(TestData.mFavorites);
+//        mFavoritesSource.prepareFavorites(TestData.mFavorites);
 
         // Act (When)
         mViewModel.removeFavorite(TestData.recipe1_favored);
@@ -69,7 +69,7 @@ public class FavoritesViewModelTest {
     @Test
     public void clearFavorites_shouldResetFavoritesToEmpty() throws Exception {
         // Arrange (Given)
-//        mFavoritesSource.addFavorites(TestData.mFavorites);
+//        mFavoritesSource.prepareFavorites(TestData.mFavorites);
 
         // Act (When)
         mViewModel.clearFavorites();
@@ -82,7 +82,7 @@ public class FavoritesViewModelTest {
     @Test
     public void requestToRecipeDetails_shouldTriggerNavToRecipeDetails() throws Exception {
         // Arrange (Given)
-//        mFavoritesSource.addFavorites(TestData.mFavorites);
+//        mFavoritesSource.prepareFavorites(TestData.mFavorites);
 
         // Act (When)
         mViewModel.requestToNavToDetails(TestData.recipe1_favored.getRecipeId());

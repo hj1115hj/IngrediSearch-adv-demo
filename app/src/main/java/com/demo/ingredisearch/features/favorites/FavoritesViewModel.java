@@ -24,7 +24,7 @@ public class FavoritesViewModel extends ViewModel {
 
     public LiveData<Resource<List<Recipe>>> getFavorites() {
         return Transformations.switchMap(mRecipeRepository.getFavorites(), resource -> {
-            mFavorites.setValue(resource);
+            mFavorites.setValue(Resource.success(resource));
             return mFavorites;
         });
     }
