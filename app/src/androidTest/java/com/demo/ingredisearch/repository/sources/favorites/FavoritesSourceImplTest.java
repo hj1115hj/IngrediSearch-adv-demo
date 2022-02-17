@@ -1,5 +1,10 @@
 package com.demo.ingredisearch.repository.sources.favorites;
 
+import android.content.Context;
+
+import androidx.room.Room;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,6 +16,18 @@ public class FavoritesSourceImplTest {
     @Before
     public void init() {
         mFavoritesSource = new FavoritesSourceImpl(null);
+    }
+
+    @After
+    public void tearDown() {
+        /* TODO */
+    }
+
+    private FavoriteDatabase createDatabase(Context context) {
+        return Room.inMemoryDatabaseBuilder(
+                context,
+                FavoriteDatabase.class
+        ).allowMainThreadQueries().build();
     }
 
     @Test

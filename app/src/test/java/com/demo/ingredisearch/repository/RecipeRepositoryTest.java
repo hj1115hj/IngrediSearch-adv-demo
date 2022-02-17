@@ -5,8 +5,6 @@ import static org.hamcrest.Matchers.is;
 
 import static java.util.Collections.emptyList;
 
-import androidx.lifecycle.LiveData;
-
 import com.demo.ingredisearch.TestData;
 import com.demo.ingredisearch.models.Recipe;
 import com.demo.ingredisearch.repository.sources.favorites.FakeFavoritesSource;
@@ -15,12 +13,17 @@ import com.demo.ingredisearch.repository.sources.remote.FakeRemoteDataSource.Dat
 import com.demo.ingredisearch.util.LiveDataTestUtil;
 import com.demo.ingredisearch.util.Resource;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
 public class RecipeRepositoryTest {
+    /*
+     * TODO - rule?
+     */
+
     // SUT
     RecipeRepository mRecipeRepository;
 
@@ -32,62 +35,67 @@ public class RecipeRepositoryTest {
         // TODO
     }
 
+    @After
+    public void tearDown() {
+        // TODO - what should be done?
+    }
+
     @Test
-    public void searchRecipes_whenFailedByNetworkError_returnsErrorResponse() {
+    public void searchRecipes_whenFailedByNetworkError_returnsErrorResponse() throws Exception {
         // Arrange (Given)
 
         // Act (When)
         mRecipeRepository.searchRecipes("some query");
 
         // Assert (Then)
-        LiveData<Resource<List<Recipe>>> resource = mRecipeRepository.getRecipes();
-        assertThat(resource, is(Resource.error("Network error", null)));
+        Resource<Recipe> resource = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getRecipe());
+        assertThat(resource, is(Resource.error("Network Error", null)));
     }
 
     @Test
-    public void searchRecipes_whenFailedWithHTTPError_returnsErrorResponse() {
+    public void searchRecipes_whenFailedWithHTTPError_returnsErrorResponse() throws Exception {
         mRemoteDataSource.setDataStatus(DataStatus.HTTPError);
 
         // Act (When)
         mRecipeRepository.searchRecipes("some query");
 
         // Assert (Then)
-        LiveData<Resource<List<Recipe>>> resource = mRecipeRepository.getRecipes();
-        assertThat(resource, is(Resource.error("HTTP error", null)));
+        Resource<Recipe> resource = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getRecipe());
+        assertThat(resource, is(Resource.error("HTTP Error", null)));
     }
 
     @Test
-    public void searchRecipes_whenFailedWithAuthError_returnsErrorResponse() {
-        mRemoteDataSource.setDataStatus(DataStatus.NetworkError);
+    public void searchRecipes_whenFailedWithAuthError_returnsErrorResponse() throws Exception {
+        mRemoteDataSource.setDataStatus(DataStatus.AuthError);
 
         // Act (When)
         mRecipeRepository.searchRecipes("some query");
 
         // Assert (Then)
-        LiveData<Resource<List<Recipe>>> resource = mRecipeRepository.getRecipes();
-        assertThat(resource, is(Resource.error("Authorization error", null)));
+        Resource<Recipe> resource = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getRecipe());
+        assertThat(resource, is(Resource.error("Authorization Error", null)));
     }
 
     @Test
-    public void searchRecipes_whenSucceedWithNullResult_returnsEmptyList() {
+    public void searchRecipes_whenSucceedWithNullResult_returnsEmptyList() throws Exception {
 
         // Act (When)
         mRecipeRepository.searchRecipes("a valid query causing empty result");
 
         // Assert (Then)
-        LiveData<Resource<List<Recipe>>> resource = mRecipeRepository.getRecipes();
+        Resource<Recipe> resource = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getRecipe());
         assertThat(resource, is(Resource.success(emptyList())));
     }
 
     @Test
-    public void searchRecipes_whenSucceed_returnsRecipesList() {
+    public void searchRecipes_whenSucceed_returnsRecipesList() throws Exception {
         mRemoteDataSource.prepareRecipes(TestData.mRecipes);
 
         // Act (When)
         mRecipeRepository.searchRecipes("a valid query");
 
         // Assert (Then)
-        LiveData<Resource<List<Recipe>>> resource = mRecipeRepository.getRecipes();
+        Resource<Recipe> resource = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getRecipe());
         assertThat(resource, is(Resource.success(TestData.mRecipes)));
     }
 
@@ -201,7 +209,7 @@ public class RecipeRepositoryTest {
 
         // Assert (Then)
         List<Recipe> favorites = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getFavorites());
-        assertThat(favorites, is(TestData.recipe1_favored));
+        assertThat(favorites, is(List.of(TestData.recipe1_favored)));
     }
 
     @Test
