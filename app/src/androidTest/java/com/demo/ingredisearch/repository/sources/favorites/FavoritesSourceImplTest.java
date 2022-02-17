@@ -15,7 +15,7 @@ public class FavoritesSourceImplTest {
 
     @Before
     public void init() {
-        mFavoritesSource = new FavoritesSourceImpl(null);
+        mFavoritesSource = new FavoritesSourceImpl(null, null);
     }
 
     @After
