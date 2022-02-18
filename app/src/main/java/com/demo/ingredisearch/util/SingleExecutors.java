@@ -6,6 +6,6 @@ public class SingleExecutors extends AppExecutors {
     private static final Executor instant = Runnable::run;
 
     public SingleExecutors() {
-        super(instant, instant);
+        super(instant, instant, instant);
     }
 }

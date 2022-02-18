@@ -29,7 +29,8 @@ public class SearchFragmentTest {
         // Act (When)
 
         // Assert (Then)
-        // check snackbar is displayed: search_query_required
+        /* TODO: check snackbar is displayed: R.string.search_query_required
+           and/or com.google.android.material.R.id.snackbar_text */
     }
 
     @Test
@@ -39,10 +40,12 @@ public class SearchFragmentTest {
         // Act (When)
 
         // Assert (Then)
-        // check snackbar is displayed
+        /* TODO: check snackbar is displayed */
 
-        // Rotate screen
+        // Act (When)
+        /* TODO: Rotate screen - UiDevice.getInstrumentation(...)
 
-        // check snackbar does not exist
+        // Assert (Then)
+        /* TODO: check snackbar does not exist */
     }
 }

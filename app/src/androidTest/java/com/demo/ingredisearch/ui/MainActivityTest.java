@@ -8,11 +8,17 @@ public class MainActivityTest {
 
     @Test
     public void activityInView() {
-        // check toolbar main title displayed
+        // Arrange (Given)
+        // Act (When)
+        /* TODO: Launch activity */
 
-        // check whether 'searchButton' view displayed
+        // Assert (Then)
+        /* TODO:
+            check toolbar main title displayed
+            check whether 'searchButton' view displayed
+            check whether 'favButton' view displayed
+         */
 
-        // check whether 'favButton' view displayed
     }
 
     @Test
@@ -20,128 +26,132 @@ public class MainActivityTest {
         // Arrange (Given)
 
         // Act (When)
-        // open drawer (drawer_layout)
+        /* TODO: open drawer (drawer_layout) */
         openDrawer();
 
         // Assert (Then)
-        // check drawer Header displayed
+        /* TODO: check drawer Header and contents displayed */
 
-        // check drawer Contents displayed
     }
 
     @Test
     public void testCloseDrawer() {
         // Arrange (Given)
+        openDrawer();
 
         // Act (When)
-        // open drawer and close drawer
+        closeDrawer();
 
         // Assert (Then)
-        // check drawer Header not displayed
+        /* TODO: check both drawer Header and contents not displayed */
 
-        // check drawer Contents not displayed
     }
 
     @Test
     public void navigateToHomeScreen() {
         // Arrange (Given)
-        // open drawer
+        openDrawer();
 
         // Act (When)
-        // click on Home menu item
+        /* TODO: click on Home menu item */
 
         // Assert (Then)
-        // check whether searchButton and favButton is displayed
+        /* TODO: check whether `searchButton` and `favButton` is displayed */
     }
 
     @Test
     public void navigateToSearchScreen() {
         // Arrange (Given)
-        // open drawer
+        openDrawer();
 
         // Act (When)
-        // click on Search menu item
+        /* TODO: click on Search menu item */
 
         // Assert (Then)
-        // check whether search_title text is displayed
+        /* TODO: check whether `R.string.search_title` text is displayed */
 
-        // check whether search_header text is displayed
+        /* TODO: check whether `R.string.search_header` text is displayed */
 
-        // check whether ingredients is displayed
+        /* TODO: check whether `R.id.ingredients` is displayed */
 
-        // check whether searchActionButton is displayed
+        /* TODO:  check whether `R.id.searchActionButton` is displayed */
+
     }
 
     @Test
     public void navigateToFavoriteScreen() {
         // Arrange (Given)
-        // open drawer
+        openDrawer();
 
         // Act (When)
-        // click on Favorites menu item
+        /* TODO: click on "Favorites" menu item */
 
         // Assert (Then)
-        // check whether "Favorites" toolbar title is displayed
+        /* TODO: check whether "Favorites" toolbar title is displayed */
+
     }
 
     @Test
     public void navigateToSearchScreen_and_backToHomeScreen() {
         // Arrange (Given)
-        // click on Search button
+        /* TODO: click on Search button */
 
         // Act (When)
-        // press on the back button or navigateBack()
+        /* TODO: press on the back button or `navigateBack()` */
 
         // Assert (Then)
-        // check whether searchButton and favButton is displayed
+        /* TODO: check whether `R.id.searchButton` and `R.id.favButton` is displayed */
+
     }
 
     @Test
     public void navigateToSearchScreenToSearchResults_and_backToMainScreen() {
         // Arrange (Given)
-        // click on Search button
+        /* TODO: click on Search button */
 
-        // enter query and press searchActionButton
+        /* TODO: enter query and press `R.id.searchActionButton` */
 
         // Act (When)
-        // press back button twice
+        /* TODO: press back button twice */
 
         // Assert (Then)
-        // check whether main screen in view
+        /* TODO: check whether main screen in view */
+
     }
 
     @Test
     public void navigateToSearchScreenToSearchResultsToRecipeDetails_and_backToMainScreen() {
         // Arrange (Given)
-        // add test data to fake remote data source
+        /* TODO: prepare fake remote data source */
 
-        // click on Search button
+        /* TODO: click on Search button */
 
-        // enter query and press searchActionButton
+        /* TODO: enter query and press `R.id.searchActionButton` */
 
-        // select a recipe
+        /* TODO: select a recipe */
 
         // Act (When)
-        // press back button twice
+        // press back button three times
         Espresso.pressBack();
         Espresso.pressBack();
         Espresso.pressBack();
 
         // Assert (Then)
-        // check whether main screen in view
+        /* TODO: check whether main screen in view */
     }
 
     private void openDrawer() {
-        // R.id.drawer_layout, Use DrawerMatchers and DrawerActions
+        /* TODO: `R.id.drawer_layout`, Use DrawerMatchers and DrawerActions */
 
     }
 
     private void closeDrawer() {
+        /* TODO */
 
     }
 
     private void navigateBack() {
-        // contentDescription "Navigate up" or R.string.abc_action_bar_up_description
+        /* TODO: contentDescription "Navigate up" or `R.string.abc_action_bar_up_description` */
     }
 
 }
