@@ -9,7 +9,7 @@ import com.demo.ingredisearch.util.Converters;
 
 @TypeConverters(Converters.class)
 @Database(entities = {Recipe.class}, exportSchema = false, version = 1)
-abstract class FavoriteDatabase extends RoomDatabase {
+public abstract class FavoriteDatabase extends RoomDatabase {
 
-    abstract FavoriteDao favoritesDao();
+    public abstract FavoriteDao favoritesDao();
 }

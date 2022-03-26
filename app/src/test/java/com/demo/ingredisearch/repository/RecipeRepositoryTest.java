@@ -48,7 +48,7 @@ public class RecipeRepositoryTest {
         mRecipeRepository.searchRecipes("some query");
 
         // Assert (Then)
-        Resource<Recipe> resource = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getRecipe());
+        Resource<List<Recipe>> resource = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getRecipes());
         assertThat(resource, is(Resource.error("Network Error", null)));
     }
 
@@ -60,7 +60,7 @@ public class RecipeRepositoryTest {
         mRecipeRepository.searchRecipes("some query");
 
         // Assert (Then)
-        Resource<Recipe> resource = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getRecipe());
+        Resource<List<Recipe>> resource = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getRecipes());
         assertThat(resource, is(Resource.error("HTTP Error", null)));
     }
 
@@ -72,7 +72,7 @@ public class RecipeRepositoryTest {
         mRecipeRepository.searchRecipes("some query");
 
         // Assert (Then)
-        Resource<Recipe> resource = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getRecipe());
+        Resource<List<Recipe>> resource = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getRecipes());
         assertThat(resource, is(Resource.error("Authorization Error", null)));
     }
 
@@ -83,7 +83,7 @@ public class RecipeRepositoryTest {
         mRecipeRepository.searchRecipes("a valid query causing empty result");
 
         // Assert (Then)
-        Resource<Recipe> resource = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getRecipe());
+        Resource<List<Recipe>> resource = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getRecipes());
         assertThat(resource, is(Resource.success(emptyList())));
     }
 
@@ -95,7 +95,7 @@ public class RecipeRepositoryTest {
         mRecipeRepository.searchRecipes("a valid query");
 
         // Assert (Then)
-        Resource<Recipe> resource = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getRecipe());
+        Resource<List<Recipe>> resource = LiveDataTestUtil.getOrAwaitValue(mRecipeRepository.getRecipes());
         assertThat(resource, is(Resource.success(TestData.mRecipes)));
     }
 

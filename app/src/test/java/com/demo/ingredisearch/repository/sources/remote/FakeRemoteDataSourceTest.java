@@ -210,16 +210,16 @@ public class FakeRemoteDataSourceTest {
         mRemoteDataSource.prepareRecipes(TestData.recipeDetails01, TestData.recipeDetails02);
 
         // Act (When)
-        mRemoteDataSource.searchRecipe("some recipe id", new ResponseCallback<>() {
+        mRemoteDataSource.searchRecipe(TestData.recipeDetails01.getRecipeId(), new ResponseCallback<>() {
             @Override
             public void onDataAvailable(Resource<Recipe> response) {
-                fail("should not be called");
+                // Assert (Then)
+                assertThat(response, is(Resource.success(TestData.recipeDetails01)));
             }
 
             @Override
             public void onError(Resource<Recipe> response) {
-                // Assert (Then)
-                assertThat(response, is(Resource.success(TestData.recipeDetails01)));
+                fail("should not be called");
             }
         });
     }

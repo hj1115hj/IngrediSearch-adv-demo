@@ -9,6 +9,23 @@ import java.util.List;
 
 public class RecipeRepository {
 
+    private static RecipeRepository INSTANCE = null;
+
+    private RecipeRepository() {
+
+    }
+
+    public static RecipeRepository getInstance() {
+        if (INSTANCE == null) {
+            synchronized (RecipeRepository.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new RecipeRepository();
+                }
+             }
+        }
+        return INSTANCE;
+    }
+
     public LiveData<Resource<List<Recipe>>> getRecipes() {
         // TODO
         return null;

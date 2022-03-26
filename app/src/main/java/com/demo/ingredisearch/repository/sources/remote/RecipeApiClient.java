@@ -54,7 +54,7 @@ public class RecipeApiClient {
                 RecipeResponse recipe = response.body();
                 if (response.isSuccessful()) {
                     if (response.code() == 401) { // Unauthorised error
-                        callback.onError(Resource.error("401 Unauthorized. Token may be invalid", null));
+                        callback.onError(Resource.error("Authorization Error", null));
                     } else if (recipe == null) {
                         callback.onDataAvailable(Resource.success(null));
                     } else {
