@@ -12,7 +12,7 @@
   <!-- search -->
   <string name="search_title">Search for ingredients</string>
   <string name="search_header">Enter the ingredients</string>
-  <string name="search_hint">eggs, chocolate, cheese</string>
+  <string name="search_hint">apple, chocolate, pizza</string>
   <string name="search_query_required">Please, input one or more ingredients!</string>
 
   <!-- search details list -->

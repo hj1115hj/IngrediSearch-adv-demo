@@ -2,8 +2,8 @@
 
 buildscript {
     ext {
-        navigation_version = '2.5.0-alpha03'
-        gradle_version = '7.1.1'
+        navigation_version = '2.6.0-alpha04'
+        gradle_version = '7.4.0'
     }
     repositories {
         google()

@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 class ServiceGenerator {
     private static final String API_KEY = "";
-    private static final String BASE_URL = "https://recipesapi.herokuapp.com";
+    private static final String BASE_URL = "https://forkify-api.herokuapp.com/";
 
     Call<RecipeSearchResponse> getRecipesService(String query) {
         return getRecipeApi().search(API_KEY, query);
