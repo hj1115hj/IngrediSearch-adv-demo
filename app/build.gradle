@@ -28,17 +28,6 @@ android {
 
     namespace 'com.demo.ingredisearch'
 
-
-//    sourceSets {
-//        String sharedTestDir = 'src/sharedTest/java'
-//        test {
-//            java.srcDir sharedTestDir
-//        }
-//        androidTest {
-//            java.srcDir sharedTestDir
-//        }
-//    }
-
 //    testOptions {
 //        unitTests {
 //            includeAndroidResources = true // for Robolectric
@@ -50,6 +39,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    testImplementation project(':library-shared-test')
+    androidTestImplementation project(':library-shared-test')
+
     def appCompat_version = '1.6.0'
     implementation  "androidx.appcompat:appcompat:$appCompat_version"
     def material_version = '1.8.0'
@@ -99,7 +92,7 @@ dependencies {
     def arch_lifecycle_version = '2.2.0'
     implementation  "androidx.lifecycle:lifecycle-extensions:$arch_lifecycle_version"
 
-    def androidx_test = '1.5.2'
+    def androidx_test = '1.5.0'
     androidTestImplementation   "androidx.test:runner:$androidx_test"
     debugImplementation         "androidx.test:core:$androidx_test" // for ActivityScenario
     def androidx_test_ext = "1.1.5"

@@ -1,16 +1,27 @@
 package com.demo.ingredisearch.repository.sources.remote;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class RecipeApiClientTest {
+
     // SUT
     RecipeApiClient mRemoteDataSource;
+
+    /* TODO: Create necessary mocks */
+
+    @Before
+    public void init() {
+        /* TODO: 1. Open the mocks
+         *       2. Create a RecipeApiClient
+         */
+    }
 
     @Test
     public void searchRecipes_whenFailedByNetworkError_returnsErrorResponse() {
         // Arrange (Given)
 
-        // Act (When)
+        // Act (When),
 
         // Assert (Then)
 
@@ -42,6 +53,7 @@ public class RecipeApiClientTest {
         // Act (When)
 
         // Assert (Then)
+
     }
 
     @Test
@@ -90,6 +102,7 @@ public class RecipeApiClientTest {
         // Act (When)
 
         // Assert (Then)
+
     }
 
     @Test

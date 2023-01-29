@@ -5,12 +5,12 @@ import static org.hamcrest.Matchers.is;
 
 import static java.util.Collections.emptyList;
 
-import com.demo.ingredisearch.TestData;
+import com.demo.inngredisearch.TestData;
 import com.demo.ingredisearch.models.Recipe;
 import com.demo.ingredisearch.repository.sources.favorites.FakeFavoritesSource;
 import com.demo.ingredisearch.repository.sources.remote.FakeRemoteDataSource;
 import com.demo.ingredisearch.repository.sources.remote.FakeRemoteDataSource.DataStatus;
-import com.demo.ingredisearch.util.LiveDataTestUtil;
+import com.demo.inngredisearch.util.LiveDataTestUtil;
 import com.demo.ingredisearch.util.Resource;
 
 import org.junit.After;

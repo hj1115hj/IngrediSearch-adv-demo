@@ -6,7 +6,7 @@ import static org.junit.Assert.fail;
 
 import static java.util.Collections.emptyList;
 
-import com.demo.ingredisearch.TestData;
+import com.demo.inngredisearch.TestData;
 import com.demo.ingredisearch.models.Recipe;
 import com.demo.ingredisearch.repository.sources.ResponseCallback;
 import com.demo.ingredisearch.repository.sources.remote.FakeRemoteDataSource.DataStatus;

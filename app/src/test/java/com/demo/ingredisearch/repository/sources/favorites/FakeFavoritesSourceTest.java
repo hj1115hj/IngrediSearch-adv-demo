@@ -7,9 +7,9 @@ import static java.util.Collections.emptyList;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 
-import com.demo.ingredisearch.TestData;
+import com.demo.inngredisearch.TestData;
 import com.demo.ingredisearch.models.Recipe;
-import com.demo.ingredisearch.util.LiveDataTestUtil;
+import com.demo.inngredisearch.util.LiveDataTestUtil;
 
 import org.junit.Before;
 import org.junit.Rule;

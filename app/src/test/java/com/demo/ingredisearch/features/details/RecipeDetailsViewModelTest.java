@@ -3,22 +3,6 @@ package com.demo.ingredisearch.features.details;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
-
-import com.demo.ingredisearch.TestData;
-import com.demo.ingredisearch.models.Recipe;
-import com.demo.ingredisearch.repository.RecipeRepository;
-import com.demo.ingredisearch.repository.sources.remote.FakeRemoteDataSource;
-import com.demo.ingredisearch.repository.sources.remote.FakeRemoteDataSource.DataStatus;
-import com.demo.ingredisearch.util.LiveDataTestUtil;
-import com.demo.ingredisearch.util.Resource;
-import com.demo.ingredisearch.util.SingleExecutors;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-
 public class RecipeDetailsViewModelTest {
 //    @Rule
 //    public InstantTaskExecutorRule rule = new InstantTaskExecutorRule();
