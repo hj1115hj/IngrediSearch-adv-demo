@@ -14,22 +14,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4f6ce4f-8e46-4c19-a6c4-e1c62c6f84af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/demo/ingredisearch/repository/sources/favorites/FavoritesSourceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/demo/ingredisearch/repository/sources/favorites/FavoritesSourceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/demo/ingredisearch/TestData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/demo/ingredisearch/features/details/RecipeDetailsViewModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/demo/ingredisearch/features/details/RecipeDetailsViewModelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/demo/ingredisearch/features/favorites/FavoritesViewModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/demo/ingredisearch/features/favorites/FavoritesViewModelTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/demo/ingredisearch/features/searchresults/SearchResultsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/demo/ingredisearch/features/searchresults/SearchResultsFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/com/demo/ingredisearch/repository/RecipeRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/demo/ingredisearch/repository/RecipeRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/demo/ingredisearch/repository/sources/favorites/FakeFavoritesSourceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/demo/ingredisearch/repository/sources/favorites/FakeFavoritesSourceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/demo/ingredisearch/repository/sources/remote/FakeRemoteDataSourceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/demo/ingredisearch/repository/sources/remote/FakeRemoteDataSourceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/demo/ingredisearch/repository/sources/remote/RecipeApiClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/demo/ingredisearch/repository/sources/remote/RecipeApiClientTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/demo/ingredisearch/util/LiveDataTestUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/demo/ingredisearch/util/LiveDataValueCapture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-shared-test/src/main/java/com/demo/ingredisearch/util/LiveDataTestUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-shared-test/src/main/java/com/demo/ingredisearch/util/LiveDataTestUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +124,7 @@
       <recent name="com.demo.ingredisearch.repository.sources.favorites" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.RecipeApiClientTest.searchRecipes_whenFailedByNetworkError_returnsErrorResponse">
+  <component name="RunManager" selected="Android App.MainActivity">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -295,8 +283,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.RecipeApiClientTest.searchRecipes_whenFailedByNetworkError_returnsErrorResponse" />
         <item itemvalue="Android App.MainActivity" />
+        <item itemvalue="Gradle.RecipeApiClientTest.searchRecipes_whenFailedByNetworkError_returnsErrorResponse" />
       </list>
     </recent_temporary>
   </component>

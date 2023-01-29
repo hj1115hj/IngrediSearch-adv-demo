@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 /* Copyright 2019 Google LLC.
    SPDX-License-Identifier: Apache-2.0 */
 public class LiveDataTestUtil {
+    @SuppressWarnings("unchecked")
     public static <T> T getOrAwaitValue(final LiveData<T> liveData) throws InterruptedException {
         final Object[] data = new Object[1];
         final CountDownLatch latch = new CountDownLatch(1);

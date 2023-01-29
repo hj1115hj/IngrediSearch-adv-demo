@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -42,7 +43,6 @@ public class SearchResultsFragment extends Fragment {
         mRetry.setOnClickListener(view -> searchRecipes(mQuery));
         ViewHelper.showSubtitle(this, mQuery);
 
-        setHasOptionsMenu(true);
         setupRecyclerView();
 
         return root;
@@ -63,21 +63,23 @@ public class SearchResultsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        requireActivity().addMenuProvider(new MenuProvider() {
+            @Override
+            public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+                menuInflater.inflate(R.menu.filter_recipes, menu);
+            }
+
+            @Override
+            public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+                if (menuItem.getItemId() == R.id.favoritesFragment) {
+                    Navigation.findNavController(requireView()).navigate(R.id.action_searchResultsFragment_to_favoritesFragment);
+                    return true;
+                }
+                return false;
+            }
+        });
+
         searchRecipes(mQuery);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.favoritesFragment) {
-            Navigation.findNavController(requireView()).navigate(R.id.action_searchResultsFragment_to_favoritesFragment);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.filter_recipes, menu);
     }
 
     private void setupRecyclerView() {
