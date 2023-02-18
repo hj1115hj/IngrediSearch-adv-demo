@@ -26,7 +26,6 @@ public class RecipeRepositoryTest {
 
     // SUT
     RecipeRepository mRecipeRepository;
-
     FakeRemoteDataSource mRemoteDataSource;
     FakeFavoritesSource mFavoritesSource;
 
@@ -43,6 +42,8 @@ public class RecipeRepositoryTest {
     @Test
     public void searchRecipes_whenFailedByNetworkError_returnsErrorResponse() throws Exception {
         // Arrange (Given)
+
+        // TODO
 
         // Act (When)
         mRecipeRepository.searchRecipes("some query");

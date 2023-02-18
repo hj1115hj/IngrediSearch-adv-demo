@@ -10,7 +10,6 @@ import java.util.concurrent.TimeUnit;
 /* Copyright 2019 Google LLC.
    SPDX-License-Identifier: Apache-2.0 */
 public class LiveDataTestUtil {
-    @SuppressWarnings("unchecked")
     public static <T> T getOrAwaitValue(final LiveData<T> liveData) throws InterruptedException {
         final Object[] data = new Object[1];
         final CountDownLatch latch = new CountDownLatch(1);
@@ -31,28 +30,13 @@ public class LiveDataTestUtil {
         return (T) data[0];
     }
 
-    /*
-     * Adapted from Google codelab by Jungsun Kim
-     */
-
-    /**
-     * Get the current value from a LiveData without needing to register an observer.
-     */
-    @SuppressWarnings("unchecked")
-    public static <T> T getValueForTest(LiveData<T> liveData) {
-        final T[] value = (T[]) new Object[1];
-        Observer<T> observer = t -> value[0] = t;
-        liveData.observeForever(observer);
-        liveData.removeObserver(observer);
-        return value[0];
-    }
 
     /**
      * Capture all values that are emitted to a LiveData<T> during the execution of
      * `captureBlock`.
      */
     public static <T> LiveDataValueCapture<T> captureValues(LiveData<T> liveData, Runnable captureBlock) {
-        LiveDataValueCapture<T> capture = new LiveDataValueCapture<>();
+        LiveDataValueCapture<T> capture = new LiveDataValueCapture<T>();
         Observer<T> observer = capture::addValue;
         liveData.observeForever(observer);
         try{

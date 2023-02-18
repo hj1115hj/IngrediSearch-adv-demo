@@ -9,15 +9,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FakeFavoritesSource {
+    public static final long FAKE_DB_DELAY = 100;
+
     private final List<Recipe> favTable = new ArrayList<>();
 
     private final MutableLiveData<List<Recipe>> mFavorites = new MutableLiveData<>();
 
+    public FakeFavoritesSource(/* TODO */) {
+        // TODO
+    }
+
     public LiveData<List<Recipe>> getFavorites() {
         // TODO
+
         return mFavorites;
     }
 
+    /**
+     * Refreshes the LiveData with the current data in the table.
+     */
     private void refresh() {
         // TODO
     }
@@ -28,6 +38,7 @@ public class FakeFavoritesSource {
         Recipe newFavorite = new Recipe(recipe);
         newFavorite.setFavorite(true);
         favTable.add(newFavorite);
+
         // TODO
     }
 

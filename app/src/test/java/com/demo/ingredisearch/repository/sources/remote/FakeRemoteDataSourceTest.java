@@ -6,7 +6,7 @@ import static org.junit.Assert.fail;
 
 import static java.util.Collections.emptyList;
 
-import com.demo.inngredisearch.TestData;
+import com.demo.ingredisearch.TestData;
 import com.demo.ingredisearch.models.Recipe;
 import com.demo.ingredisearch.repository.sources.ResponseCallback;
 import com.demo.ingredisearch.repository.sources.remote.FakeRemoteDataSource.DataStatus;
@@ -114,13 +114,13 @@ public class FakeRemoteDataSourceTest {
         mRemoteDataSource.searchRecipes("some query", new ResponseCallback<>() {
             @Override
             public void onDataAvailable(Resource<List<Recipe>> response) {
-                fail("should not be called");
+                // Assert (Then)
+                assertThat(response, is(Resource.success(TestData.mRecipes)));
             }
 
             @Override
             public void onError(Resource<List<Recipe>> response) {
-                // Assert (Then)
-                assertThat(response, is(Resource.success(TestData.mRecipes)));
+                fail("should not be called");
             }
         });
     }

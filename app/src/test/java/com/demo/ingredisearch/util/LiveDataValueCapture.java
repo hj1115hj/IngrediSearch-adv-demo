@@ -32,23 +32,3 @@ public class LiveDataValueCapture<T> {
         runnable.run();
     }
 }
-
-/**
- * Extension function to capture all values that are emitted to a LiveData<T> during the execution of
- * `captureBlock`.
- */
-//        inline fun<T>LiveData<T>.captureValues(block:LiveDataValueCapture<T>.()->Unit)
-//
-//        {
-//        val capture=LiveDataValueCapture<T> ()
-//        val observer=Observer<T> {
-//        capture.addValue(it)
-//        }
-//        observeForever(observer)
-//        try{
-//        capture.block()
-//        }finally{
-//        removeObserver(observer)
-//        }
-//        }
-

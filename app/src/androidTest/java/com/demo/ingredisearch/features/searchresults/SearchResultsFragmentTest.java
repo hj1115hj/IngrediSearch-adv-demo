@@ -121,7 +121,7 @@ public class SearchResultsFragmentTest {
         scenario.onFragment(fragment -> Navigation.setViewNavController(fragment.requireView(), navHostController));
 
         // Act (When)
-        onView(withId(R.id.list)).perform( /* TODO: */ null);
+//        onView(withId(R.id.list)).perform( /* TODO: */ );
 
         // Assert (Then)
         verify(navHostController).navigate(
