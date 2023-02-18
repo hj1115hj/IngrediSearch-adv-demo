@@ -17,14 +17,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.demo.ingredisearch.R;
 import com.demo.ingredisearch.adapters.RecipeAdapter;
 import com.demo.ingredisearch.models.Recipe;
+import com.demo.ingredisearch.util.EventObserver;
+import com.demo.ingredisearch.util.Resource;
 import com.demo.ingredisearch.util.ViewHelper;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class FavoritesFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private ViewHelper mViewHelper;
     private RecipeAdapter mAdapter;
+    private FavoritesViewModel mViewModel;
 
     @Nullable
     @Override
@@ -37,7 +42,7 @@ public class FavoritesFragment extends Fragment {
 
         setupRecyclerView();
 
-        // TODO - temporary
+        // TODO - temporary, remove later
         showNoFavorites();
 
         return root;
@@ -60,7 +65,7 @@ public class FavoritesFragment extends Fragment {
         mAdapter = new RecipeAdapter(new RecipeAdapter.Interaction() {
             @Override
             public void onRemoveFavorite(@NotNull Recipe recipe) {
-                // TODO
+                mViewModel.removeFavorite(recipe);
             }
 
             @Override
@@ -70,11 +75,42 @@ public class FavoritesFragment extends Fragment {
 
             @Override
             public void onClickItem(@NotNull Recipe recipe) {
-                // TODO
-                navigateToRecipeDetails(recipe.getRecipeId());
+                mViewModel.requestToNavToDetails(recipe.getRecipeId());
             }
         });
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    private void subscribeObservers() {
+
+        mViewModel.getFavorites().observe(getViewLifecycleOwner(), resource -> {
+            if (resource != null) {
+                handleResource(resource);
+            }
+        });
+
+        mViewModel.navToRecipeDetails().observe(getViewLifecycleOwner(), new EventObserver<>(
+                this::navigateToRecipeDetails
+        ));
+    }
+
+    private void handleResource(Resource<List<Recipe>> resource) {
+        switch (resource.status) {
+            case SUCCESS:
+                mViewHelper.hideOthers();
+                if (resource.data.isEmpty()) {
+                    mViewHelper.showNoResults();
+                } else {
+                    mAdapter.setRecipes(resource.data);
+                }
+                break;
+            case ERROR:
+                mViewHelper.showError();
+                break;
+            case LOADING:
+                mViewHelper.showLoading();
+                break;
+        }
     }
 
     private void navigateToRecipeDetails(String recipeId) {
@@ -83,7 +119,7 @@ public class FavoritesFragment extends Fragment {
         );
     }
 
-    // TODO - temporary
+    // TODO - temporary, remove when favorites are implemented
     private void showNoFavorites() {
         mViewHelper.showNoResults();
     }

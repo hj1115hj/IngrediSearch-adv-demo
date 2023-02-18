@@ -13,6 +13,11 @@ public class SearchFragmentTest {
         // Assert (Then)
     }
 
+    /*
+     * Mock, Navigation.setViewNavController, and FragmentScenario are used to test navigation.
+     * or
+     * TestNavHostController and runOnUiThread are used to test navigation.
+     */
     @Test
     public void search_validQuery_navigateToSearchResultsView() {
         // Arrange (Given)
@@ -33,6 +38,9 @@ public class SearchFragmentTest {
            and/or com.google.android.material.R.id.snackbar_text */
     }
 
+    /*
+     * TODO: Rotate screen - UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+     */
     @Test
     public void search_emptyQuery_displayWarningSnackBar_shouldNotDisplayAgain_whenRotated() {
         // Arrange (Given)

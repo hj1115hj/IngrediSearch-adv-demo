@@ -12,8 +12,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.MenuHost;
 import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Lifecycle;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -63,7 +65,13 @@ public class SearchResultsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        requireActivity().addMenuProvider(new MenuProvider() {
+        setUpMenu();
+
+        searchRecipes(mQuery);
+    }
+
+    private void setUpMenu() {
+        ((MenuHost) requireActivity()).addMenuProvider(new MenuProvider() {
             @Override
             public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
                 menuInflater.inflate(R.menu.filter_recipes, menu);
@@ -77,9 +85,7 @@ public class SearchResultsFragment extends Fragment {
                 }
                 return false;
             }
-        });
-
-        searchRecipes(mQuery);
+        }, getViewLifecycleOwner(), Lifecycle.State.RESUMED);
     }
 
     private void setupRecyclerView() {

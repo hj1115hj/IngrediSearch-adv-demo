@@ -38,7 +38,7 @@ public class SearchResultsFragmentTest {
         /* TODO: prepare remote data */
 
         // Act (When)
-//        SearchResultsFragmentArgs args = new SearchResultsFragmentArgs.Builder("eggs").build();
+        SearchResultsFragmentArgs args = new SearchResultsFragmentArgs.Builder("eggs").build();
         FragmentScenario.launchInContainer(SearchResultsFragment.class, /* TODO: pass query arg */ null, R.style.AppTheme);
 
         // Assert (Then)
@@ -50,7 +50,8 @@ public class SearchResultsFragmentTest {
         // Arrange (Given)
 
         // Act (When)
-        FragmentScenario.launchInContainer(SearchResultsFragment.class, /* TODO: pass query arg */ null, R.style.AppTheme);
+        SearchResultsFragmentArgs args = new SearchResultsFragmentArgs.Builder("eggs").build();
+        FragmentScenario.launchInContainer(SearchResultsFragment.class, args.toBundle(), R.style.AppTheme);
 
         // Assert (Then)
         /* TODO: check R.id.noresultsContainer, R.id.noresultsTitle, R.string.noresults displayed */
@@ -62,7 +63,8 @@ public class SearchResultsFragmentTest {
         /* TODO: prepare remote source status */
 
         // Act (When)
-        FragmentScenario.launchInContainer(SearchResultsFragment.class, /* TODO: pass query arg */ null, R.style.AppTheme);
+        SearchResultsFragmentArgs args = new SearchResultsFragmentArgs.Builder("eggs").build();
+        FragmentScenario.launchInContainer(SearchResultsFragment.class, args.toBundle(), R.style.AppTheme);
 
         // Assert (Then)
         /* TODO: check R.id.errorContainer, R.id.retry, R.string.retry displayed */
@@ -74,7 +76,8 @@ public class SearchResultsFragmentTest {
         /* TODO: prepare remote source data and set status as error */
 
         // Act (When)
-        FragmentScenario.launchInContainer(SearchResultsFragment.class, /* TODO: pass query arg */ null, R.style.AppTheme);
+        SearchResultsFragmentArgs args = new SearchResultsFragmentArgs.Builder("eggs").build();
+        FragmentScenario.launchInContainer(SearchResultsFragment.class, args.toBundle(), R.style.AppTheme);
 
         // Assert (Then)
         /* TODO: check R.id.errorContainer, R.id.retry, R.string.retry displayed */
@@ -91,6 +94,10 @@ public class SearchResultsFragmentTest {
         // Given
         /* TODO: prepare remote data */
 
+        SearchResultsFragmentArgs args = new SearchResultsFragmentArgs.Builder("eggs").build();
+        FragmentScenario<SearchResultsFragment> scenario =
+                FragmentScenario.launchInContainer(SearchResultsFragment.class, args.toBundle(), R.style.AppTheme);
+
         // Act (When)
         /* TODO: Click the target R.id.favButton of an item view in recyclerview - how? */
 
@@ -102,6 +109,10 @@ public class SearchResultsFragmentTest {
     public void selectRecipeAsUnFavorite_markItsStatusAsUnFavorite() throws Exception {
         // Given
         /* TODO: prepare remote data and favorite source data */
+
+        SearchResultsFragmentArgs args = new SearchResultsFragmentArgs.Builder("eggs").build();
+        FragmentScenario<SearchResultsFragment> scenario =
+                FragmentScenario.launchInContainer(SearchResultsFragment.class, args.toBundle(), R.style.AppTheme);
 
         // Act (When)
         /* TODO: Click the target R.id.favButton of an item view in recyclerview - how? */
