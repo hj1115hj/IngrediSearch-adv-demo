@@ -29,7 +29,7 @@ public class SearchResultsFragmentTest {
 
     @After
     public void tearDown() {
-        /* TODO: destory repository */
+        /* TODO: destroy repository */
     }
 
     @Test

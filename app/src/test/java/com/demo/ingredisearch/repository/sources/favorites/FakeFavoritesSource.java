@@ -4,24 +4,26 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.demo.ingredisearch.models.Recipe;
+import com.demo.ingredisearch.util.AppExecutors;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FakeFavoritesSource {
-    public static final long FAKE_DB_DELAY = 100;
+    public static final long FAKE_DB_DELAY = 100L;
+
+    private final AppExecutors mAppExecutors;
 
     private final List<Recipe> favTable = new ArrayList<>();
 
     private final MutableLiveData<List<Recipe>> mFavorites = new MutableLiveData<>();
 
-    public FakeFavoritesSource(/* TODO */) {
-        // TODO
+    public FakeFavoritesSource(AppExecutors appExecutors) {
+        this.mAppExecutors = appExecutors;
     }
 
     public LiveData<List<Recipe>> getFavorites() {
-        // TODO
-
+        refresh();
         return mFavorites;
     }
 
@@ -29,7 +31,16 @@ public class FakeFavoritesSource {
      * Refreshes the LiveData with the current data in the table.
      */
     private void refresh() {
-        // TODO
+        try {
+            Thread.sleep(FAKE_DB_DELAY);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        mAppExecutors.diskIO().execute(() -> {
+            // TODO
+
+        });
     }
 
     public void addFavorite(Recipe recipe) {
@@ -39,7 +50,7 @@ public class FakeFavoritesSource {
         newFavorite.setFavorite(true);
         favTable.add(newFavorite);
 
-        // TODO
+        refresh();
     }
 
     private boolean contains(Recipe recipe) {
@@ -48,13 +59,13 @@ public class FakeFavoritesSource {
 
     public void removeFavorite(Recipe recipe) {
         if (favTable.removeIf(recipe::isSameAs)) {
-            // TODO
+            refresh();
         }
     }
 
     public void clearFavorites() {
         favTable.clear();
-        // TODO
+        refresh();
     }
 
     public void prepareFavorites(List<Recipe> recipes) {

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class RecipeRepository {
 
-    private static RecipeRepository INSTANCE = null;
+    private static volatile RecipeRepository INSTANCE = null;
 
     private RecipeRepository() {
 

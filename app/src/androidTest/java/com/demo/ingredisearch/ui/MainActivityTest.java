@@ -154,4 +154,13 @@ public class MainActivityTest {
         /* TODO: contentDescription "Navigate up" or `R.string.abc_action_bar_up_description` */
     }
 
+//    private String getToolbarNavigationContentDescription() {
+//        String[] contentDescription = new String[1];
+//        rule.getScenario().onActivity(
+//                activity -> {
+//                    contentDescription[0] = Objects.requireNonNull(((Toolbar) activity.findViewById(R.id.toolbar)).getNavigationContentDescription()).toString();
+//                }
+//        );
+//        return contentDescription[0];
+//    }
 }

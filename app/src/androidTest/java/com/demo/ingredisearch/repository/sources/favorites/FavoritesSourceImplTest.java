@@ -15,14 +15,17 @@ public class FavoritesSourceImplTest {
     // SUT
     FavoritesSourceImpl mFavoritesSource;
 
+    FavoriteDatabase mDatabase;
+
     @Before
     public void init() {
-        mFavoritesSource = new FavoritesSourceImpl(null, null);
+        mDatabase = createDatabase(null /* TODO */);
+        mFavoritesSource = new FavoritesSourceImpl(mDatabase, null);
     }
 
     @After
     public void tearDown() {
-        /* TODO */
+        mDatabase.close();
     }
 
     private FavoriteDatabase createDatabase(Context context) {

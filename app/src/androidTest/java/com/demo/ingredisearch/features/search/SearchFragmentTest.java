@@ -51,7 +51,9 @@ public class SearchFragmentTest {
         /* TODO: check snackbar is displayed */
 
         // Act (When)
-        /* TODO: Rotate screen - UiDevice.getInstrumentation(...)
+        /* TODO: Rotate screen
+           - UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+         */
 
         // Assert (Then)
         /* TODO: check snackbar does not exist */
